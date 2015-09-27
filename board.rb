@@ -95,6 +95,7 @@ class Board
       puts str_arr.join(" | ")
       str_arr = []
     end
+    puts (1..@height).to_a.join("   ")
   end
 
   def [](pos)
