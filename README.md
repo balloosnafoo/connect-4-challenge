@@ -1,8 +1,8 @@
 # Connect Four
 
 At the end of two hours I had a working game, which was modular for board size
-and winning length requirement. I spent one more hour afterwards writing a few
-tests and the read me. I think that the key decision that needed to me made was
+and winning length requirement. I spent about one more hour afterwards writing a few
+tests and the read me. I think that the key decision that needed to be made was
 how to check whether the current board state is a winning one, which I explain
 below. I also made the decision to have a player object, despite it having very
 little required of it. I did this because it makes future expansion much easier.
@@ -13,7 +13,8 @@ everything, then it is easy to add a ComputerPlayer that submits its input to
 the game using the interface that is already there.
 
 I enjoyed this challenge, but I have to admit that I have written a
-connect four implementation once before in ruby.
+connect four implementation once before in ruby. That implementation can be
+found [here](https://github.com/balloosnafoo/app-academy/tree/master/w1d2/connect-4).
 
 ### Checking win conditions
 

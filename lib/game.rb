@@ -34,8 +34,3 @@ class ConnectFour
     @players.first
   end
 end
-
-if __FILE__ == $PROGRAM_NAME
-  cf = ConnectFour.new(10, 10, 4)
-  cf.play
-end

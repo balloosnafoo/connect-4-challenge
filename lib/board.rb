@@ -15,10 +15,6 @@ class Board
     @height = height
   end
 
-  def generate_grid(width, height)
-    Array.new(height) { Array.new(width) }
-  end
-
   # Places piece and checks whether board is in winning state.
   def execute_move(col_num, color)
     place_piece(col_num, color)
@@ -113,5 +109,10 @@ class Board
   def []=(pos, val)
     row, col = pos
     @grid[row][col] = val
+  end
+
+  private
+  def generate_grid(width, height)
+    Array.new(height) { Array.new(width) }
   end
 end
