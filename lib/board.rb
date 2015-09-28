@@ -19,6 +19,7 @@ class Board
     Array.new(height) { Array.new(width) }
   end
 
+  # Places piece and checks whether board is in winning state.
   def execute_move(col_num, color)
     place_piece(col_num, color)
     winning_move?(col_num, color)
@@ -27,7 +28,7 @@ class Board
   def place_piece(col_num, color)
     return false unless is_valid?(col_num)
     @grid.each_with_index do |row, idx|
-      # place piece above if  current row is occupied
+      # place piece above if current row is occupied
       if row[col_num]
         @grid[idx - 1][col_num] = color
         break
@@ -37,6 +38,9 @@ class Board
     end
   end
 
+  # This method iterates through all vectors (horizontal, vertical, diag) going
+  # as far as possible in each vector, reflecting, and counting how many steps
+  # it can take in the reflected vector.
   def winning_move?(col_idx, color)
     row_idx = highest_occupied_row(col_idx)
     original_position = [row_idx, col_idx]
@@ -52,6 +56,7 @@ class Board
     false
   end
 
+  # Helper method for winning_move?
   def last_contiguous_on_vector(vector, row_idx, col_idx, color)
     while @grid[row_idx] && @grid[row_idx][col_idx] == color
       row_idx += vector[0]
@@ -63,6 +68,7 @@ class Board
     [row_idx, col_idx]
   end
 
+  # Helper method for winning_move?
   def num_contiguous_on_vector(vector, row_idx, col_idx, color)
     counter = 0
     while @grid[row_idx] && @grid[row_idx][col_idx] == color
@@ -76,15 +82,17 @@ class Board
   def is_valid?(col_num)
     # if 0th row is occupied, col is full
     return false if @grid[0][col_num]
-    # row is out of range
+    # returns false if row is out of range
     (0...@width).include?(col_num)
   end
 
+  # This method is used to determine the most recently placed piece's coords
   def highest_occupied_row(col_idx)
     @grid.each_with_index { |row, idx| return idx if row[col_idx] }
   end
 
   def render
+    system("clear")
     str_arr = []
     (0...@height).each do |row_idx|
       (0...@width).each do |col_idx|
