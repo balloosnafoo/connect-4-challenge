@@ -33,3 +33,9 @@ length required to make a winning connection. The previous solution would have
 require O(nm) time where n is height and m is width. While both solutions take
 place in linear time, it is guaranteed to be true that the length of a winning
 row is smaller than the area of the board.
+
+Correction: I originally wrote that the solution that checks the entire board
+after every play has linear complexity. This is only true if you assume that
+the size of the board grows only in one dimension. Realistically the board is
+likely to be square or near square, making the previously mentioned solution
+quadratic.
